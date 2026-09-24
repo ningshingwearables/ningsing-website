@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NINGSING — Wearables</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f6f3;
+            color: #171717;
+        }
+
+        header {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #deddd9;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .menu {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 15vw, 100px);
+            letter-spacing: 8px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
+            padding: 14px 24px;
+            border: 1px solid #171717;
+            text-decoration: none;
+            color: #171717;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .button.dark {
+            background: #171717;
+            color: white;
+        }
+
+        section {
+            padding: 80px 24px;
+            border-top: 1px solid #deddd9;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        section p {
+            max-width: 550px;
+            margin: 20px auto 0;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .product {
+            background: #e9e8e4;
+            padding: 70px 20px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .product span {
+            margin-top: 8px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .steps {
+            max-width: 800px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .step-number {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .step h3 {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        .step p {
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 40px 24px;
+            border-top: 1px solid #deddd9;
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 700px) {
+            .products,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 65vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NINGSING</div>
+    <div class="menu">WEARABLES</div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <h1>NINGSING</h1>
+
+        <p>
+            Memories, made wearable.
+        </p>
+
+        <div class="buttons">
+            <a href="#collection" class="button dark">SHOP</a>
+            <a href="#how" class="button">HOW IT WORKS</a>
+        </div>
+    </section>
+
+    <section>
+        <h2>YOUR STORY. YOUR PIECE.</h2>
+
+        <p>
+            Jewellery carrying something only you can access.
+            Keep a memory, a message, a song or a moment close to you.
+        </p>
+    </section>
+
+    <section id="collection">
+        <h2>THE COLLECTION</h2>
+
+        <div class="products">
+
+            <div class="product">
+                <h3>QR BRACELETS</h3>
+                <span>Memories you can wear.</span>
+            </div>
+
+            <div class="product">
+                <h3>QR NECKLACES</h3>
+                <span>Something worth keeping.</span>
+            </div>
+
+            <div class="product">
+                <h3>QR KEYCHAINS</h3>
+                <span>Carry your memories anywhere.</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="how">
+        <h2>HOW IT WORKS</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>CHOOSE</h3>
+                <p>
+                    Choose the piece you want to make personal.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>CREATE</h3>
+                <p>
+                    Add your photo, video, song or message.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>REMEMBER</h3>
+                <p>
+                    Scan your QR and relive the memory anytime.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    NINGSING WEARABLES
+    <br><br>
+    Something worth remembering.
+</footer>
+
+</body>
+</html>
