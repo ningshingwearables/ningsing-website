@@ -1,273 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ningshing – Wearables</title>
 
-    <title>NINGSHING — Wearables</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f6f3;
-            color: #171717;
-        }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f3ef;
+  color: #111;
+  line-height: 1.5;
+}
 
-        header {
-            padding: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #deddd9;
-        }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 3px;
-        }
+/* NAV */
 
-        .menu {
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 6%;
+  background: rgba(245,243,239,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ddd9d2;
+}
 
-        .hero {
-            min-height: 75vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 24px;
-        }
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
 
-        .hero h1 {
-            font-size: clamp(48px, 15vw, 100px);
-            letter-spacing: 8px;
-            font-weight: 500;
-        }
+.nav-links {
+  display: flex;
+  gap: 25px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 
-        .hero p {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #666;
-            letter-spacing: 1px;
-        }
+.nav-links a:hover {
+  opacity: 0.5;
+}
 
-        .buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 35px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+/* HERO */
 
-        .button {
-            padding: 14px 24px;
-            border: 1px solid #171717;
-            text-decoration: none;
-            color: #171717;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 70px 7%;
+  position: relative;
+  overflow: hidden;
+}
 
-        .button.dark {
-            background: #171717;
-            color: white;
-        }
+.hero-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
 
-        section {
-            padding: 80px 24px;
-            border-top: 1px solid #deddd9;
-            text-align: center;
-        }
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  opacity: 0.55;
+}
 
-        section h2 {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
+.hero h1 {
+  font-size: clamp(65px, 15vw, 150px);
+  line-height: 0.82;
+  letter-spacing: -7px;
+  font-weight: 700;
+}
 
-        section p {
-            max-width: 550px;
-            margin: 20px auto 0;
-            line-height: 1.7;
-            color: #666;
-        }
+.hero h1 span {
+  display: block;
+  font-size: 0.34em;
+  letter-spacing: 7px;
+  margin-top: 28px;
+  font-weight: 400;
+}
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1000px;
-            margin: 50px auto 0;
-        }
+.hero-text {
+  max-width: 420px;
+  margin-top: 35px;
+  font-size: 17px;
+  color: #555;
+}
 
-        .product {
-            background: #e9e8e4;
-            padding: 70px 20px;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            text-align: left;
-        }
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 35px;
+}
 
-        .product h3 {
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  border: 1px solid #111;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
 
-        .product span {
-            margin-top: 8px;
-            color: #777;
-            font-size: 13px;
-        }
+.button.primary {
+  background: #111;
+  color: #fff;
+}
 
-        .steps {
-            max-width: 800px;
-            margin: 50px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
+.button:hover {
+  transform: translateY(-3px);
+}
 
-        .step-number {
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #888;
-        }
+/* DECORATIVE ORB */
 
-        .step h3 {
-            margin-top: 15px;
-            font-size: 18px;
-        }
+.hero-orb {
+  position: absolute;
+  right: -130px;
+  top: 15%;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,#dedbd5,#aaa69f);
+  opacity: 0.45;
+}
 
-        .step p {
-            font-size: 14px;
-        }
+/* INTRO */
 
-        footer {
-            padding: 40px 24px;
-            border-top: 1px solid #deddd9;
-            text-align: center;
-            color: #777;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
+.intro {
+  padding: 120px 7%;
+  background: #111;
+  color: #fff;
+}
 
-        @media (max-width: 700px) {
-            .products,
-            .steps {
-                grid-template-columns: 1fr;
-            }
+.intro small {
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: 0.5;
+}
 
-            .hero {
-                min-height: 65vh;
-            }
-        }
-    </style>
+.intro h2 {
+  font-size: clamp(40px, 8vw, 85px);
+  line-height: 0.95;
+  max-width: 850px;
+  margin-top: 25px;
+  letter-spacing: -3px;
+}
+
+.intro p {
+  max-width: 520px;
+  margin-top: 30px;
+  color: #aaa;
+}
+
+/* COLLECTION */
+
+.collection {
+  padding: 110px 7%;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 50px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.product {
+  background: #ebe8e2;
+  min-height: 430px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-7px);
+}
+
+.product-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SIMPLE PRODUCT MOCKUPS */
+
+.ring {
+  width: 150px;
+  height: 150px;
+  border: 12px solid #777;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px #444;
+}
+
+.chain {
+  width: 145px;
+  height: 200px;
+  border: 7px solid #777;
+  border-radius: 50%;
+  transform: rotate(8deg);
+}
+
+.key {
+  width: 90px;
+  height: 130px;
+  border: 8px solid #777;
+  border-radius: 20px;
+  position: relative;
+}
+
+.key:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 5px solid #777;
+  border-radius: 50%;
+  left: 22px;
+  top: 20px;
+}
+
+.product h3 {
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+
+.product p {
+  color: #666;
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+/* HOW IT WORKS */
+
+.how {
+  padding: 110px 7%;
+  border-top: 1px solid #d9d5ce;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 40px;
+}
+
+.step-number {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.step h3 {
+  margin-top: 25px;
+  font-size: 25px;
+}
+
+.step p {
+  margin-top: 12px;
+  max-width: 300px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* QR */
+
+.qr-section {
+  background: #dedbd5;
+  padding: 110px 7%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.qr-section h2 {
+  font-size: clamp(40px,6vw,70px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.qr-section p {
+  margin-top: 25px;
+  max-width: 450px;
+  color: #555;
+}
+
+.qr-box {
+  background: #fff;
+  width: 240px;
+  height: 240px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  font-weight: bold;
+  letter-spacing: -4px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #111;
+  color: #fff;
+  padding: 60px 7%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+footer .logo {
+  font-size: 18px;
+}
+
+footer p {
+  color: #888;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+  nav {
+    padding: 17px 5%;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .hero {
+    min-height: 82vh;
+    padding: 70px 6%;
+  }
+
+  .hero h1 {
+    letter-spacing: -4px;
+  }
+
+  .hero-orb {
+    width: 280px;
+    height: 280px;
+    right: -120px;
+  }
+
+  .products,
+  .steps,
+  .qr-section {
+    grid-template-columns: 1fr;
+  }
+
+  .product {
+    min-height: 380px;
+  }
+
+  .qr-box {
+    width: 190px;
+    height: 190px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">NINGSHING</div>
-    <div class="menu">WEARABLES</div>
-</header>
+<nav>
+  <div class="logo">NINGSHING</div>
 
-<main>
+  <div class="nav-links">
+    <a href="#collection">Shop</a>
+    <a href="#how">How it works</a>
+    <a href="#story">Story</a>
+  </div>
+</nav>
 
-    <section class="hero">
-        <h1>NINGSHING</h1>
+<section class="hero">
 
-        <p>
-            Memories, made wearable.
-        </p>
+  <div class="hero-content">
 
-        <div class="buttons">
-            <a href="#collection" class="button dark">SHOP</a>
-            <a href="#how" class="button">HOW IT WORKS</a>
-        </div>
-    </section>
+    <div class="eyebrow">Memory × Jewellery</div>
 
-    <section>
-        <h2>YOUR STORY. YOUR PIECE.</h2>
+    <h1>
+      NINGSHING
+      <span>WEARABLES</span>
+    </h1>
 
-        <p>
-            Jewellery carrying something only you can access.
-            Keep a memory, a message, a song or a moment close to you.
-        </p>
-    </section>
+    <p class="hero-text">
+      Your memories shouldn't live only inside your phone.
+      Turn the moments that matter into something you can wear.
+    </p>
 
-    <section id="collection">
-        <h2>THE COLLECTION</h2>
+    <div class="hero-buttons">
+      <a href="#collection" class="button primary">Explore</a>
+      <a href="#how" class="button">How it works</a>
+    </div>
 
-        <div class="products">
+  </div>
 
-            <div class="product">
-                <h3>QR BRACELETS</h3>
-                <span>Memories you can wear.</span>
-            </div>
+  <div class="hero-orb"></div>
 
-            <div class="product">
-                <h3>QR NECKLACES</h3>
-                <span>Something worth keeping.</span>
-            </div>
+</section>
 
-            <div class="product">
-                <h3>QR KEYCHAINS</h3>
-                <span>Carry your memories anywhere.</span>
-            </div>
+<section class="intro" id="story">
 
-        </div>
-    </section>
+  <small>THE IDEA</small>
 
-    <section id="how">
-        <h2>HOW IT WORKS</h2>
+  <h2>
+    NOT JUST<br>
+    JEWELLERY.
+  </h2>
 
-        <div class="steps">
+  <p>
+    NINGSHING connects physical jewellery with digital memories.
+    A bracelet can hold a photograph. A necklace can hold a song.
+    A keychain can hold a message.
+  </p>
 
-            <div class="step">
-                <div class="step-number">01</div>
-                <h3>CHOOSE</h3>
-                <p>
-                    Choose the piece you want to make personal.
-                </p>
-            </div>
+</section>
 
-            <div class="step">
-                <div class="step-number">02</div>
-                <h3>CREATE</h3>
-                <p>
-                    Add your photo, video, song or message.
-                </p>
-            </div>
+<section class="collection" id="collection">
 
-            <div class="step">
-                <div class="step-number">03</div>
-                <h3>REMEMBER</h3>
-                <p>
-                    Scan your QR and relive the memory anytime.
-                </p>
-            </div>
+  <div class="section-label">The collection</div>
 
-        </div>
-    </section>
+  <div class="products">
 
-</main>
+    <div class="product">
+
+      <div class="product-visual">
+        <div class="ring"></div>
+      </div>
+
+      <div>
+        <h3>Memory Bracelet</h3>
+        <p>A memory you can carry every day.</p>
+      </div>
+
+    </div>
+
+    <div class="product">
+
+      <div class="product-visual">
+        <div class="chain"></div>
+      </div>
+
+      <div>
+        <h3>Music Necklace</h3>
+        <p>One scan. One song. One memory.</p>
+      </div>
+
+    </div>
+
+    <div class="product">
+
+      <div class="product-visual">
+        <div class="key"></div>
+      </div>
+
+      <div>
+        <h3>Memory Keychain</h3>
+        <p>Keep something meaningful close.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="how" id="how">
+
+  <div class="section-label">How it works</div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Choose</h3>
+      <p>Pick the piece that fits your story.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>Create</h3>
+      <p>Add your photo, video, song or message.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Remember</h3>
+      <p>Scan your jewellery whenever you want to relive it.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="qr-section">
+
+  <div>
+    <div class="section-label">One scan away</div>
+
+    <h2>
+      YOUR STORY.<br>
+      YOUR PIECE.
+    </h2>
+
+    <p>
+      Every NINGSHING piece will carry a unique QR code.
+      Scan it and your memory comes back to life.
+    </p>
+  </div>
+
+  <div class="qr-box">
+    QR
+  </div>
+
+</section>
 
 <footer>
-    NINGSHING WEARABLES
-    <br><br>
-    Something worth remembering.
+
+  <div>
+    <div class="logo">NINGSHING WEARABLES</div>
+    <p>Memories, made wearable.</p>
+  </div>
+
+  <p>Something worth remembering.</p>
+
 </footer>
 
 </body>
