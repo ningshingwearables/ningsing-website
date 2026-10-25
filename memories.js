@@ -6,7 +6,7 @@
 window.NINGSHING_MEMORIES = {
   "NS001": {
     title: "A message for you",
-    message: "Your first NINGSHING memory page is ready to customise.",
+    message: "Every moment with you is a memory I want to keep forever. ❤️",
     audioUrl: "",
     photoUrl: ""
   }
