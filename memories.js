@@ -8,7 +8,7 @@ window.NINGSHING_MEMORIES = {
     title: "A message for you",
     message: "Every moment with you is a memory I want to keep forever. ❤️",
     audioUrl: "",
-    photoUrl: ""
+    photoUrl: "https://raw.githubusercontent.com/ningshingwearables/ningsing-website/refs/heads/main/8400F016-D3A4-48D4-A90A-E26488CC82E1.png",
   }
 
   /*
