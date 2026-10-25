@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171715">
+  <title>A Memory, Made Wearable | NINGSHING WEARABLES</title>
+  <meta name="description" content="A personal memory, made wearable by NINGSHING WEARABLES.">
+  <style>
+    :root { color-scheme: light; --ink:#191916; --muted:#77766f; --paper:#f7f6f2; --line:#e6e3dc; --gold:#a58a54; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--paper); color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .wrap { width:min(100% - 32px, 560px); margin:0 auto; padding:28px 0 36px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+    .brand { font-size:12px; letter-spacing:.19em; font-weight:750; line-height:1.5; }
+    .tag { font-size:10px; color:var(--muted); letter-spacing:.13em; text-transform:uppercase; }
+    main { padding:38px 0 24px; }
+    .eyebrow { color:var(--gold); font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-weight:400; font-size:clamp(36px, 8vw, 54px); line-height:1.06; letter-spacing:-.035em; margin:12px 0 14px; }
+    .intro { color:var(--muted); font-size:15px; line-height:1.7; margin:0 0 28px; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:0 10px 35px rgba(35,30,20,.035); }
+    .memory-title { font-family:Georgia,serif; font-size:25px; font-weight:400; margin:0 0 8px; }
+    .message { white-space:pre-wrap; font-size:16px; line-height:1.8; margin:12px 0 0; }
+    .audio-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.13em; margin:0 0 12px; }
+    audio { display:block; width:100%; margin-top:12px; }
+    .photo { display:block; width:100%; max-height:420px; object-fit:cover; border-radius:13px; margin-top:16px; background:#eee; }
+    .empty-icon { display:grid; place-items:center; width:58px; height:58px; border:1px solid var(--line); border-radius:50%; font-size:25px; margin-bottom:18px; }
+    .notice { color:var(--muted); font-size:12px; line-height:1.6; margin:18px 2px 0; }
+    footer { border-top:1px solid var(--line); padding-top:18px; display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:11px; letter-spacing:.04em; }
+    .hidden { display:none !important; }
+    .error { color:#8b3e31; }
+    @media (max-width:420px) { .wrap{width:min(100% - 24px,560px);padding-top:20px} .card{padding:18px} main{padding-top:30px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">NINGSHING<br>WEARABLES</div>
+      <div class="tag">Memories, made wearable.</div>
+    </header>
+    <main>
+      <div class="eyebrow">A little piece of forever</div>
+      <h1>A memory,<br>made wearable.</h1>
+      <p class="intro">Some moments deserve to stay close. This page holds a memory chosen especially for this piece.</p>
+
+      <section id="memoryCard" class="card hidden" aria-live="polite">
+        <div id="emptyIcon" class="empty-icon">♡</div>
+        <p id="audioLabel" class="audio-label hidden">Listen to this memory</p>
+        <h2 id="memoryTitle" class="memory-title">A message for you</h2>
+        <audio id="audioPlayer" controls preload="metadata" class="hidden"></audio>
+        <p id="memoryMessage" class="message hidden"></p>
+        <img id="memoryPhoto" class="photo hidden" alt="A photo shared with this memory">
+      </section>
+
+      <section id="notFound" class="card hidden">
+        <h2 class="memory-title">This memory isn't ready yet.</h2>
+        <p class="intro" style="margin:8px 0 0">Please check the QR code or contact NINGSHING WEARABLES for help.</p>
+      </section>
+
+      <p class="notice">This memory was created for a NINGSHING WEARABLES piece. Anyone with this link may be able to view or listen to the content on this page.</p>
+    </main>
+    <footer>
+      <span>MADE TO KEEP CLOSE</span>
+      <span>© NINGSHING WEARABLES</span>
+    </footer>
+  </div>
+  <script src="./memories.js"></script>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const id = (params.get("id") || "").trim().toUpperCase();
+      const data = window.NINGSHING_MEMORIES && window.NINGSHING_MEMORIES[id];
+      const card = document.getElementById("memoryCard");
+      const notFound = document.getElementById("notFound");
+      if (!data) { notFound.classList.remove("hidden"); return; }
+      card.classList.remove("hidden");
+      const title = document.getElementById("memoryTitle");
+      const message = document.getElementById("memoryMessage");
+      const audio = document.getElementById("audioPlayer");
+      const photo = document.getElementById("memoryPhoto");
+      const audioLabel = document.getElementById("audioLabel");
+      title.textContent = data.title || "A message for you";
+      if (data.audioUrl) {
+        audio.src = data.audioUrl;
+        audio.classList.remove("hidden");
+        audioLabel.classList.remove("hidden");
+      }
+      if (data.message) {
+        message.textContent = data.message;
+        message.classList.remove("hidden");
+      }
+      if (data.photoUrl) {
+        photo.src = data.photoUrl;
+        photo.classList.remove("hidden");
+      }
+      if (!data.audioUrl && !data.message && !data.photoUrl) {
+        title.textContent = "This memory is being prepared.";
+      }
+      document.title = (data.title || "A Memory, Made Wearable") + " | NINGSHING WEARABLES";
+    })();
+  </script>
+</body>
+</html>
